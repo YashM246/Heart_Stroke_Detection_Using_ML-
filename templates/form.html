@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Heart Stroke Detection</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<style>
+ body {
+  background-image: url("../static/images/bgform.jpg");
+  background-repeat: no-repeat;
+  height: 100vh;
+  background-size: cover;
+  
+}
+  .logo{
+    height: 100px;
+    border: 1px solid #fff;
+    padding: 5px;
+    width: 150px;
+}
+
+</style>
+<body>
+  <!-- <div class="bgf"></div> -->
+  <div id="base">
+  </div>
+  <div class="bgform" ></div>
+  <header>
+  <div class="formhead"><h1><strong> Heart-stroke Prediction </strong><img src="../static/images/Heartlogo.jpg" alt="" class="logo"></h1>        
+ 
+  </div>
+  
+  
+  
+     </header>
+    <form action="/predict" method="POST">
+        <div class="inputdesign">
+        <!-- Gender -->
+      
+        <!-- age -->
+       <div class="input-group mb-3">
+        <div class="input-group-prepend">
+         <label class="input-group-text" for="inputGroupSelect01">Age</label>
+        </div>
+        <input id="ticketNum" type="number" name="age" value="0" min="1" />
+       </div>
+       
+       <!-- hyper tension -->
+       <div class="input-group mb-3">
+         <div class="input-group-prepend">
+           <label class="input-group-text" for="inputGroupSelect01">Hyper-tension</label>
+         </div>
+         <select class="custom-select" name="hyperten" id="inputGroupSelect01">
+           <option selected>Choose...</option>
+           <option value="1">Yes</option>
+           <option value="0">No</option>
+         
+         </select>
+       </div>
+
+       <!-- heart disease -->
+       <div class="input-group mb-3">
+         <div class="input-group-prepend">
+           <label class="input-group-text" for="inputGroupSelect01">Heart disease</label>
+         </div>
+         <select class="custom-select" name="heartdis" id="inputGroupSelect01">
+           <option selected>Choose...</option>
+           <option value="1">Yes</option>
+           <option value="0">No</option>
+           
+         </select>
+       </div>
+       <!-- married -->
+       <div class="input-group mb-3">
+         <div class="input-group-prepend">
+           <label class="input-group-text" for="inputGroupSelect01">Martial status</label>
+         </div>
+         <select class="custom-select" name="married" id="inputGroupSelect01">
+           <option selected>Choose...</option>
+           <option value="1">Yes</option>
+           <option value="0">No</option>
+         </select>
+       </div>
+       <!-- work type -->
+       
+       <!-- residence type -->
+       
+       <!-- avg glucose level -->
+       <div class="input-group mb-3">
+        <div class="input-group-prepend">
+         <label class="input-group-text" for="inputGroupSelect01">glucose</label>
+        </div>
+        <input id="ticketNum" type="number" name="gluc" value="0" min="1" />
+       </div>
+       <!-- bmi -->
+            
+      
+       <!-- smoking status -->
+       
+      
+       <button type="Submit" class="btn btn-warning" id="submitbtn" >Submit</button>
+
+       </form>
+  {% if prediction_text %}
+  <!-- <br><h4 align="center"><b>{{prediction_text}}</b></h4> -->
+  <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+    
+    <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+      <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+    </symbol>
+    
+  </svg>
+  <br>
+  <div class="alert alert-primary d-flex align-items-center" role="alert">
+    <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Info:"><use xlink:href="#info-fill"/></svg>
+    <br><div>
+      &nbsp&nbsp&nbsp{{prediction_text}}
+    </div>
+  </div>
+  {% endif %} 
+  </div>
+ 
+
+</body>
+</html>
